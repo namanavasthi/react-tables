@@ -1,8 +1,13 @@
 .table {
-  flex-grow: 4;
-  display: flex;
+  width: 70%;
+  table-layout: fixed;
+  border-collapse: collapse;
 }
 
 thead {
-  flex-grow: 1;
+  width: 100%;
+}
+
+tbody {
+  width: 100%;
 }

@@ -3,9 +3,10 @@ import React from "react";
 import "./Table.css";
 
 import Headings from "../Headings/Headings.jsx";
+import TableRows from "../TableRows/TableRows.jsx";
 
 export default function Table(props) {
-  const { headings, handleSort, sortDirection } = props;
+  const { headings, handleSort, sortDirection, tableData } = props;
   return (
     <table className="table">
       <thead>
@@ -15,6 +16,7 @@ export default function Table(props) {
           sortDirection={sortDirection}
         />
       </thead>
+      <TableRows data={tableData} headings={headings} />
     </table>
   );
 }

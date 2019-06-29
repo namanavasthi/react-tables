@@ -1,4 +1,10 @@
-.filters {
-  flex-grow: 2;
+.filter-group {
+  width: 30%;
   background-color: #3f51b5;
+}
+
+.filter-group__title {
+  font-size: 2em;
+  line-height: 1.5em;
+  text-transform: capitalize;
 }

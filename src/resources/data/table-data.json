@@ -1,5 +1,6 @@
 {
   "title": "Players",
+  "filterTitle": "filters",
   "headings": [
     {
       "name": "player name",
@@ -17,6 +18,60 @@
       "sort": "desc"
     }
   ],
+  "filterGroups": [
+    {
+      "groupTitle": "Teams",
+      "prop": "teamName",
+      "filters": [
+        {
+          "name": "Team Fanatic",
+          "value": "Fanatic"
+        },
+        {
+          "name": "Team EG",
+          "value": "EG"
+        },
+        {
+          "name": "Team VG",
+          "value": "VG"
+        },
+        {
+          "name": "Team VP",
+          "value": "VP"
+        },
+        {
+          "name": "Team Liquid",
+          "value": "Liquid"
+        }
+      ]
+    },
+    {
+      "groupTitle": "Positions",
+      "prop": "positions",
+      "filters": [
+        {
+          "name": "Core Safe Lane (Hard Carry)",
+          "value": "1"
+        },
+        {
+          "name": "Core Mid Lane (Semi Carry)",
+          "value": "2"
+        },
+        {
+          "name": "Offlaner",
+          "value": "3"
+        },
+        {
+          "name": "Roamer/Jungler Support",
+          "value": "4"
+        },
+        {
+          "name": "Babysitter/Hard Support",
+          "value": "5"
+        }
+      ]
+    }
+  ],
   "tableData": [
     {
       "playerName": "Abed Azel L. Yusop",
@@ -26,35 +81,35 @@
       "positions": ["2"]
     },
     {
-      "playerName": "Syed Sumail \"SumaiL\" Hassan",
+      "playerName": "Syed Sumail Hassan",
       "gameName": "EG.Suma1L",
       "teamName": "EG",
       "eSport": "dota 2",
       "positions": ["2"]
     },
     {
-      "playerName": "Zhang \"Paparazi\" Chengjun",
+      "playerName": "Zhang Chengjun",
       "gameName": "VG.Paparazi",
       "teamName": "VG",
       "eSport": "dota 2",
       "positions": ["1", "2"]
     },
     {
-      "playerName": "Roman \"RAMZES666\" Kushnarev",
+      "playerName": "Roman Kushnarev",
       "gameName": "VP.Ramzes666",
       "teamName": "VP",
       "eSport": "dota 2",
       "positions": ["1", "3"]
     },
     {
-      "playerName": "Maroun \"GH\" Merhej",
+      "playerName": "Maroun Merhej",
       "gameName": "Liquid.gh",
       "teamName": "Liquid",
       "eSport": "dota 2",
       "positions": ["3", "4"]
     },
     {
-      "playerName": "Artour \"Arteezy\" Babaev",
+      "playerName": "Artour Babaev",
       "gameName": "EG.Arteezy",
       "teamName": "EG",
       "eSport": "dota 2",

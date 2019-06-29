@@ -1,0 +1,14 @@
+.table__rows--row {
+  font-size: 1em;
+  line-height: 1.5em;
+  background-color: #00bcd4;
+}
+
+.table__rows--row:nth-child(even) {
+  background-color: #009688;
+}
+
+.table__row--cell {
+  padding: 10px 20px;
+  text-transform: capitalize;
+}

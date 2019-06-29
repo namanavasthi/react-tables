@@ -43,6 +43,19 @@ export default class Controller extends Component {
     });
   };
 
+  handleFilterClick = (filterGroup, filter) => {
+    console.log(filterGroup, " : ", filter);
+    // check if currData has any values within it
+    let currData = this.state.currData;
+    if (currData && currData.length) {
+      if (Array.isArray(this.state.currData[0][filterGroup])) {
+        console.log("handle array");
+      } else {
+        console.log("handle string");
+      }
+    }
+  };
+
   render() {
     const { data, currData, sortDirection } = this.state;
     return (
@@ -51,14 +64,18 @@ export default class Controller extends Component {
           {data.title}
           <span> ({data.tableData ? data.tableData.length : ""})</span>
         </h1>
-        <div className="controller__grid">
-          <Filters />
-          <Table
-            headings={data.headings}
-            handleSort={this.handleSort}
-            sortDirection={sortDirection}
+        <div className="controller__grid flex-container wrap">
+          <Filters
+            filterGroups={data.filterGroups}
+            title={data.filterTitle}
+            handleFilterClick={this.handleFilterClick}
           />
-          {console.log(currData)}
+          <Table
+            tableData={currData}
+            headings={data.headings}
+            sortDirection={sortDirection}
+            handleSort={this.handleSort}
+          />
         </div>
       </div>
     );
