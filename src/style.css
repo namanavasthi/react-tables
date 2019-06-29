@@ -14,3 +14,13 @@ body {
 .app {
   background-color: #f44336;
 }
+
+.button {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: inherit;
+  line-height: inherit;
+  background-color: transparent;
+}

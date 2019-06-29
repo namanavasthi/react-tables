@@ -3,15 +3,18 @@
   "headings": [
     {
       "name": "player name",
-      "prop": "playerName"
+      "prop": "playerName",
+      "sort": "desc"
     },
     {
       "name": "in-game name",
-      "prop": "gameName"
+      "prop": "gameName",
+      "sort": "desc"
     },
     {
       "name": "e-sport",
-      "prop": "eSport"
+      "prop": "eSport",
+      "sort": "desc"
     }
   ],
   "tableData": [

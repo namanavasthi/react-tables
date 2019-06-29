@@ -2,10 +2,15 @@ import React from "react";
 
 import "./Table.css";
 
-export default function Table() {
+import Headings from "../Headings/Headings.jsx";
+
+export default function Table(props) {
+  const { headings, handleSort } = props;
   return (
-    <div>
-      <h2>should be a component without any state</h2>
-    </div>
+    <table className="table">
+      <thead>
+        <Headings headings={headings} handleSort={handleSort} />
+      </thead>
+    </table>
   );
 }
