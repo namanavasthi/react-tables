@@ -1,10 +1,11 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
 
 import "./Headings.css";
 
 export default function Headings(props) {
-  const { headings, handleSort } = props;
-
+  const { headings, handleSort, sortDirection } = props;
   if (headings) {
     return (
       <tr>
@@ -14,7 +15,16 @@ export default function Headings(props) {
               className="heading__button button"
               onClick={() => handleSort(heading.prop)}
             >
-              {heading.name}
+              <span className="heading__button-text">{heading.name}</span>
+
+              <FontAwesomeIcon
+                icon={faSortUp}
+                color={sortDirection === "asc" ? "black" : "white"}
+              />
+              <FontAwesomeIcon
+                icon={faSortDown}
+                color={sortDirection !== "asc" ? "black" : "white"}
+              />
             </button>
           </td>
         ))}

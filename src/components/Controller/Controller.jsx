@@ -18,7 +18,7 @@ export default class Controller extends Component {
     data: [],
     currData: [],
     columnToSort: "",
-    sortDirection: "asc"
+    sortDirection: "desc"
   };
 
   componentDidMount() {
@@ -34,7 +34,7 @@ export default class Controller extends Component {
       sortDirection:
         this.state.columnToSort === headingProp
           ? mapInvertDirection[this.state.sortDirection]
-          : "desc",
+          : "asc",
       currData: orderBy(
         this.state.currData,
         headingProp,
@@ -44,7 +44,7 @@ export default class Controller extends Component {
   };
 
   render() {
-    const { data, currData } = this.state;
+    const { data, currData, sortDirection } = this.state;
     return (
       <div className="controller">
         <h1 className="controller__title">
@@ -53,7 +53,11 @@ export default class Controller extends Component {
         </h1>
         <div className="controller__grid">
           <Filters />
-          <Table headings={data.headings} handleSort={this.handleSort} />
+          <Table
+            headings={data.headings}
+            handleSort={this.handleSort}
+            sortDirection={sortDirection}
+          />
           {console.log(currData)}
         </div>
       </div>

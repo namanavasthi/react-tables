@@ -1,6 +1,25 @@
-.heading {
+tr {
   flex-grow: 1;
+  display: flex;
+}
+
+.heading {
+  flex: 1;
   font-size: 2em;
   line-height: 1.5em;
   background-color: #2196f3;
+}
+
+.heading__button {
+  position: relative;
+}
+
+.heading__button-text {
+  padding: 0 20px;
+}
+
+.heading__button > svg {
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
 }
