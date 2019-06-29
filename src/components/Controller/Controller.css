@@ -1,0 +1,11 @@
+.controller {
+  width: 80%;
+  margin: 0 auto;
+  max-width: 1280px;
+  background-color: #e91e63;
+}
+
+.controller__title {
+  font-size: 4em;
+  line-height: 1.5em;
+}

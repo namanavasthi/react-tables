@@ -1,10 +1,12 @@
 import React from "react";
 import { render } from "react-dom";
 
+import Controller from "./components/Controller/Controller.jsx";
+
 export default function App() {
   return (
-    <div>
-      <h1>My React Table App</h1>
+    <div className="app">
+      <Controller />
     </div>
   );
 }
