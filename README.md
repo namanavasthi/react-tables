@@ -16,7 +16,4 @@
 
 #TODO
 
-- add filtering functinality
-- add checked/unchecked states to each filter
-- maintain a list of all checked options
 - add clear all filters option

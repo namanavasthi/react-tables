@@ -25,23 +25,28 @@
       "filters": [
         {
           "name": "Team Fanatic",
-          "value": "Fanatic"
+          "value": "Fanatic",
+          "checked": false
         },
         {
           "name": "Team EG",
-          "value": "EG"
+          "value": "EG",
+          "checked": false
         },
         {
           "name": "Team VG",
-          "value": "VG"
+          "value": "VG",
+          "checked": false
         },
         {
           "name": "Team VP",
-          "value": "VP"
+          "value": "VP",
+          "checked": false
         },
         {
           "name": "Team Liquid",
-          "value": "Liquid"
+          "value": "Liquid",
+          "checked": false
         }
       ]
     },
@@ -51,23 +56,28 @@
       "filters": [
         {
           "name": "Core Safe Lane (Hard Carry)",
-          "value": "1"
+          "value": "1",
+          "checked": false
         },
         {
           "name": "Core Mid Lane (Semi Carry)",
-          "value": "2"
+          "value": "2",
+          "checked": false
         },
         {
           "name": "Offlaner",
-          "value": "3"
+          "value": "3",
+          "checked": false
         },
         {
           "name": "Roamer/Jungler Support",
-          "value": "4"
+          "value": "4",
+          "checked": false
         },
         {
           "name": "Babysitter/Hard Support",
-          "value": "5"
+          "value": "5",
+          "checked": false
         }
       ]
     }

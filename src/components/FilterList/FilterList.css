@@ -1,7 +1,28 @@
 .filter-list {
-  background-color: #8bc34a;
+  background-color: #9c27b0;
 }
 
 .filter-list__item {
   padding: 10px 0;
+}
+
+.checkbox {
+  width: 0.8em;
+  height: 0.8em;
+  float: right;
+  position: relative;
+  margin: 0.35em 15px;
+  background-color: #00bcd4;
+}
+
+.checked:after {
+  position: absolute;
+  content: "";
+  width: 0.8em;
+  height: 0.4em;
+  border-color: #ffeb3b;
+  border-width: 0 0 2px 2px;
+  border-style: solid;
+  transform-origin: center;
+  transform: rotate(-45deg);
 }

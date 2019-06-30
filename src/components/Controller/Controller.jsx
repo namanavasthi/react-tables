@@ -20,27 +20,53 @@ export default class Controller extends Component {
     currData: [],
     columnToSort: "",
     sortDirection: "desc",
-    applyFilters: []
+    applyFilters: [],
+    currFilterStates: []
   };
 
   componentDidMount() {
     this.setState({
       data: AppData,
-      currData: AppData.tableData
+      currData: AppData.tableData,
+      currFilterStates: AppData.filterGroups
     });
   }
+
+  setCheckState = (filterGroup, filter) => {
+    let { currFilterStates } = this.state;
+
+    Object.values(currFilterStates).forEach(function(currFilterGroup) {
+      if (currFilterGroup.prop === filterGroup) {
+        Object.values(currFilterGroup.filters).forEach(function(currFilter) {
+          if (currFilter.value === filter) {
+            currFilter.checked = !currFilter.checked;
+          }
+        });
+      }
+    });
+
+    this.setState({
+      currFilterStates: currFilterStates
+    });
+  };
 
   generateFilters = (applyFilters, filterGroup, filter) => {
     if (applyFilters[filterGroup] === undefined) {
       applyFilters[filterGroup] = [filter];
+      // adding a new filter
+      this.setCheckState(filterGroup, filter);
     } else {
       // check unique
       if (applyFilters[filterGroup].includes(filter)) {
         applyFilters[filterGroup] = applyFilters[filterGroup].filter(
           eachfilter => eachfilter !== filter
         );
+        // removing an old filter
+        this.setCheckState(filterGroup, filter);
       } else {
         applyFilters[filterGroup].push(filter);
+        // adding a new filter
+        this.setCheckState(filterGroup, filter);
       }
     }
     return applyFilters;
@@ -99,7 +125,7 @@ export default class Controller extends Component {
   };
 
   render() {
-    const { data, currData, sortDirection } = this.state;
+    const { data, currData, sortDirection, currFilterStates } = this.state;
     return (
       <div className="controller">
         <h1 className="controller__title">
@@ -108,7 +134,7 @@ export default class Controller extends Component {
         </h1>
         <div className="controller__grid flex-container wrap">
           <Filters
-            filterGroups={data.filterGroups}
+            filterGroups={currFilterStates}
             title={data.filterTitle}
             handleFilterClick={this.handleFilterClick}
           />

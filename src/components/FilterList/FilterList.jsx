@@ -13,6 +13,12 @@ export default function FilterList(props) {
           onClick={() => handleFilterClick(filter.value)}
         >
           {filter.name}
+          <span
+            key={i}
+            className={
+              filter.checked ? "checkbox checked" : "checkbox unchecked"
+            }
+          ></span>
         </button>
       ))}
     </li>
