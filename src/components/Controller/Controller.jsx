@@ -21,7 +21,8 @@ export default class Controller extends Component {
     columnToSort: "",
     sortDirection: "desc",
     applyFilters: [],
-    currFilterStates: []
+    currFilterStates: [],
+    clearAllPresent: false
   };
 
   componentDidMount() {
@@ -31,6 +32,21 @@ export default class Controller extends Component {
       currFilterStates: AppData.filterGroups
     });
   }
+
+  isClearAllPresent = () => {
+    const { applyFilters } = this.state;
+    let flag = 0;
+    Object.values(applyFilters).forEach(function(currFilterGroup) {
+      if (currFilterGroup.length) {
+        flag = 1;
+      }
+    });
+    if (flag) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   setCheckState = (filterGroup, filter) => {
     let { currFilterStates } = this.state;
@@ -122,10 +138,49 @@ export default class Controller extends Component {
         currData: currFilteredData
       });
     }
+
+    this.setState({
+      clearAllPresent: this.isClearAllPresent()
+    });
+  };
+
+  handkeClearAll = () => {
+    let applyFilters = [];
+    let originalData = this.state.data.tableData;
+    let { currData, currFilterStates } = this.state;
+    let currFilteredData = this.state.data.tableData;
+
+    if (currData !== undefined) {
+      currFilteredData = this.generateFilteredData(
+        applyFilters,
+        originalData,
+        currFilteredData
+      );
+
+      Object.values(currFilterStates).forEach(function(currFilterGroup) {
+        Object.values(currFilterGroup.filters).forEach(function(currFilter) {
+          currFilter.checked = false;
+        });
+      });
+
+      this.setState({
+        data: AppData,
+        applyFilters: [],
+        clearAllPresent: false,
+        currData: currFilteredData,
+        currFilterStates: currFilterStates
+      });
+    }
   };
 
   render() {
-    const { data, currData, sortDirection, currFilterStates } = this.state;
+    const {
+      data,
+      currData,
+      sortDirection,
+      currFilterStates,
+      clearAllPresent
+    } = this.state;
     return (
       <div className="controller">
         <h1 className="controller__title">
@@ -134,10 +189,13 @@ export default class Controller extends Component {
         </h1>
         <div className="controller__grid flex-container wrap">
           <Filters
-            filterGroups={currFilterStates}
             title={data.filterTitle}
+            filterGroups={currFilterStates}
+            clearAllPresent={clearAllPresent}
+            handkeClearAll={this.handkeClearAll}
             handleFilterClick={this.handleFilterClick}
           />
+
           <Table
             tableData={currData}
             headings={data.headings}

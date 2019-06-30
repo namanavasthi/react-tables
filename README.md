@@ -13,7 +13,3 @@
 # Color Scheme
 
 > `http://materialuicolors.co/?utm_source=launchers`
-
-#TODO
-
-- add clear all filters option
