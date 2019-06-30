@@ -18,7 +18,8 @@ export default class Controller extends Component {
     data: [],
     currData: [],
     columnToSort: "",
-    sortDirection: "desc"
+    sortDirection: "desc",
+    applyFilters: []
   };
 
   componentDidMount() {
@@ -27,6 +28,22 @@ export default class Controller extends Component {
       currData: AppData.tableData
     });
   }
+
+  generateFilters = (applyFilters, filterGroup, filter) => {
+    if (applyFilters[filterGroup] === undefined) {
+      applyFilters[filterGroup] = [filter];
+    } else {
+      // check unique
+      if (applyFilters[filterGroup].includes(filter)) {
+        applyFilters[filterGroup] = applyFilters[filterGroup].filter(
+          eachfilter => eachfilter !== filter
+        );
+      } else {
+        applyFilters[filterGroup].push(filter);
+      }
+    }
+    return applyFilters;
+  };
 
   handleSort = headingProp => {
     this.setState({
@@ -45,8 +62,15 @@ export default class Controller extends Component {
 
   handleFilterClick = (filterGroup, filter) => {
     console.log(filterGroup, " : ", filter);
-    // check if currData has any values within it
+
+    let { applyFilters } = this.state;
+
     let currData = this.state.currData;
+
+    applyFilters = this.generateFilters(applyFilters, filterGroup, filter);
+
+    console.log(applyFilters);
+
     if (currData && currData.length) {
       if (Array.isArray(this.state.currData[0][filterGroup])) {
         console.log("handle array");
