@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import orderBy from "lodash/orderBy";
+import _ from "lodash";
 
 import "./Controller.css";
 
@@ -45,6 +46,23 @@ export default class Controller extends Component {
     return applyFilters;
   };
 
+  generateFilteredData = (applyFilters, originalData, currFilteredData) => {
+    Object.keys(applyFilters).forEach(function(key) {
+      if (Array.isArray(originalData[0][key])) {
+        if (applyFilters[key].length > 0) {
+          currFilteredData = _.filter(currFilteredData, function(o) {
+            return _.intersection(o[key], applyFilters[key]).length > 0;
+          });
+        }
+      } else {
+        applyFilters[key].forEach(value => {
+          currFilteredData = _.filter(currFilteredData, [key, value]);
+        });
+      }
+    });
+    return currFilteredData;
+  };
+
   handleSort = headingProp => {
     this.setState({
       columnToSort: headingProp,
@@ -61,22 +79,22 @@ export default class Controller extends Component {
   };
 
   handleFilterClick = (filterGroup, filter) => {
-    console.log(filterGroup, " : ", filter);
-
-    let { applyFilters } = this.state;
-
-    let currData = this.state.currData;
+    let { applyFilters, currData } = this.state;
+    let currFilteredData = this.state.data.tableData;
+    let originalData = this.state.data.tableData;
 
     applyFilters = this.generateFilters(applyFilters, filterGroup, filter);
 
-    console.log(applyFilters);
+    if (currData !== undefined) {
+      currFilteredData = this.generateFilteredData(
+        applyFilters,
+        originalData,
+        currFilteredData
+      );
 
-    if (currData && currData.length) {
-      if (Array.isArray(this.state.currData[0][filterGroup])) {
-        console.log("handle array");
-      } else {
-        console.log("handle string");
-      }
+      this.setState({
+        currData: currFilteredData
+      });
     }
   };
 
